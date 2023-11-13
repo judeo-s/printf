@@ -19,7 +19,7 @@ int _printf(const char *str, ...)
 
 	va_start(num_of_args, str);
 
-	while(*str)
+	while (*str)
 	{
 		if (*str != '%')
 		{
@@ -29,29 +29,29 @@ int _printf(const char *str, ...)
 		else
 		{
 			str++;
-		
 			if (*str == '\0')
 				break;
 			if (*str == 'c')
 			{
-				char letter = va_arg(num_of_args, char);
+				char letter = va_arg(num_of_args, int);
+
 				write(1, &letter, 1);
-				chars_printed++;			
+				chars_printed++;
 			}
 			if (*str == 's')
 			{
 				char *string = va_arg(num_of_args, char*);
 				int len_str = 0;
 
-				while(string[len_str] != '\0')
+				while (string[len_str] != '\0')
 					len_str++;
 
-				write(1, string, len_str)
+				write(1, string, len_str);
 					chars_printed += len_str;
 			}
 			if (*str == '%')
 			{
-				wirte(1, str, 1);
+				write(1, str, 1);
 				chars_printed++;
 			}
 		}
@@ -59,5 +59,5 @@ int _printf(const char *str, ...)
 	}
 	va_end(num_of_args);
 
-	return char_to_print;
+	return (chars_printed);
 }
