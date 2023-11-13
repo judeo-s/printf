@@ -1,22 +1,63 @@
 #include <stdio.h>
 #include <stdarg.h>
+#include <unistd.h>
 #include "main.h"
 
 /**
  * _printf - a function that prints formated text
  *
  * @str: const char*
- * Return: void
+ * Return: a formated char/str
  */
-void _printf(const char *str, ...)
+int _printf(const char *str, ...)
 {
-	if (str)
-	{
-		char *parsed;
-		va_list args;
+	int chars_printed = 0;
+	va_list num_of_args;
 
-		va_start(args, str);
-		parsed = parser(str, args);
-		va_end(args);
+	if (str == NULL)
+		return (-1);
+
+	va_start(num_of_args, str);
+
+	while(*str)
+	{
+		if (*str != '%')
+		{
+			write(1, str, 1);
+			chars_printed++;
+		}
+		else
+		{
+			str++;
+		
+			if (*str == '\0')
+				break;
+			if (*str == 'c')
+			{
+				char letter = va_arg(num_of_args, char);
+				write(1, &letter, 1);
+				chars_printed++;			
+			}
+			if (*str == 's')
+			{
+				char *string = va_arg(num_of_args, char*);
+				int len_str = 0;
+
+				while(string[len_str] != '\0')
+					len_str++;
+
+				write(1, string, len_str)
+					chars_printed += len_str;
+			}
+			if (*str == '%')
+			{
+				wirte(1, str, 1);
+				chars_printed++;
+			}
+		}
+		str++;
 	}
+	va_end(num_of_args);
+
+	return char_to_print;
 }

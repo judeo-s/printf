@@ -11,7 +11,7 @@ typedef struct format_list
 	char * (*f)(va_list);
 }format_t;
 
-void _printf(const char *, ...);
+int _printf(const char *, ...);
 char * parser(const char *, va_list);
 
 
