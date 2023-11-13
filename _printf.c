@@ -38,7 +38,7 @@ int _printf(const char *str, ...)
 				write(1, &letter, 1);
 				chars_printed++;
 			}
-			if (*str == 's')
+			else if (*str == 's')
 			{
 				char *string = va_arg(num_of_args, char*);
 				int len_str = 0;
@@ -49,7 +49,7 @@ int _printf(const char *str, ...)
 				write(1, string, len_str);
 					chars_printed += len_str;
 			}
-			if (*str == '%')
+			else if (*str == '%')
 			{
 				write(1, str, 1);
 				chars_printed++;
