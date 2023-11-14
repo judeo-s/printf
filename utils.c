@@ -1,5 +1,14 @@
 #include "main.h"
 
+void clear_buffer(char* buffer, int size)
+{
+	int i;
+
+	for (i = 0; i < size; ++i)
+	{
+		buffer[i] = '\0';
+	}
+}
 
 /**
  * print_buffer - a function that is used to print to the screen in chuncks.
@@ -67,11 +76,11 @@ char *_rot13(va_list args)
  */
 char *_reverse(va_list args)
 {
-	char *text = va_arg(args, char *);
+	char *text = _string(args);
 	int size = _strlen(text) - 1;
 	int index = 0;
 	int i;
-	static char *rev_string;
+	char *rev_string;
 
 	rev_string = buffer_alloc(size);
 
@@ -85,4 +94,3 @@ char *_reverse(va_list args)
 
 	return (rev_string);
 }
-

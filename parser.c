@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 format_t format_list[] = {
 	{"c", _char},
@@ -57,6 +58,7 @@ char *parser(const char *input_string, va_list args)
 		index++;	
 		x++;
 	}
+	parsed_buffer[index] = input_string[x];
+	free(temp_buffer);
 	return (parsed_buffer);
 }
-

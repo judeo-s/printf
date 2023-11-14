@@ -38,7 +38,12 @@ char *_percent(__attribute__((unused))va_list args)
  */
 char *_string(va_list args)
 {
-	char *string = va_arg(args, char *);
+	char *temp, *string;
+
+	temp = va_arg(args, char *);
+	string = buffer_alloc(_strlen(temp));
+	str_concat(string, temp);
+
 	return (string);
 }
 
@@ -98,6 +103,4 @@ void str_concat(char *s1, char *s2)
 		y++;
 	}
 	string1[x] = '\0';
-
-	free(string2);
 }

@@ -33,6 +33,7 @@ char *buffer_alloc(int size)
 	if(!buffer)
 		return (NULL);
 
+	clear_buffer(buffer, size);
 	return (buffer);
 }
 
@@ -64,7 +65,7 @@ char *_realloc(char *buffer, int size)
 {
 	static char *new_buffer;
 
- 	new_buffer = (char *)malloc(size);
+ 	new_buffer = buffer_alloc(size);
 	if (new_buffer)
 	{
 		_memcpy(new_buffer, buffer, BUFFER_SIZE);

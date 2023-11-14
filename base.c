@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <stdio.h>
 /**
  * _binary - a function that converts integer values to binary string
  *
@@ -50,10 +50,11 @@ char *_binary(va_list args)
 char *_octal(va_list args)
 {
 	char *octal_str = buffer_alloc(33);
-	int i, j, num;
+	int i, j; 
+	long num;
 	char char_temp;
 
-	num = va_arg(args, int);
+	num = va_arg(args, long);
 	i = 0;
 
 	do {
@@ -81,10 +82,10 @@ char *_octal(va_list args)
 */
 char *_HEX(va_list args)
 {
-char *hex_string = (char *)malloc(33);
+char *hex_string = buffer_alloc(33);
 int i = 0, j, temp;
 char char_temp;
-int num = va_arg(args, int);
+long num = va_arg(args, long);
 
 if (num > 0)
 {
@@ -108,7 +109,7 @@ if (num > 0)
 	}
 	return (hex_string);
 }
-return ("");
+return (hex_string);
 }
 
 
@@ -121,9 +122,9 @@ return ("");
 char *_hex(va_list args)
 {
 	char *hex_string = (char *)malloc(33);
-	int i = 0, j, temp;
+	int i = 0, j;
 	char char_temp;
-	int num = va_arg(args, int);
+	long temp, num = va_arg(args, long);
 
 	if (num > 0)
 	{
@@ -147,5 +148,5 @@ char *_hex(va_list args)
 		}
 		return (hex_string);
 	}
-	return ("");
+	return (hex_string);
 }

@@ -41,4 +41,5 @@ char *_char(va_list args);
 char *_reverse(va_list args);
 char *_rot13(va_list args);
 void print_buffer(char *buffer);
+void clear_buffer(char* buffer, int size);
 #endif
