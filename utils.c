@@ -2,15 +2,30 @@
 
 
 /**
- * _string - a function that retrieves strings from variadic arguments
- *
- * @args: va_list
- * Return: char *
+ * print_buffer - a function that is used to print to the screen in chuncks.
+ * 
+ * @buffer: char *
+ * Return: void
  */
-char *_string(va_list args)
+void print_buffer(char *buffer)
 {
-	char *string = va_arg(args, char *);
-	return (string);
+	int len = _strlen(buffer);
+	int written = 0, to_write, result;
+
+	while (written < len)
+	{
+		to_write = len - written;
+		if (to_write > 1024)
+		{
+			to_write = 1024;
+		}
+		result = write(1, buffer + written, to_write);
+		if (result == -1)
+		{
+			break;
+		}
+		written += result;
+	}
 }
 
 
@@ -20,7 +35,7 @@ char *_string(va_list args)
  *
  * @s: string input
  * Return: char *
-*/
+ */
 char *_rot13(va_list args)
 {
 	char *text = va_arg(args, char *);

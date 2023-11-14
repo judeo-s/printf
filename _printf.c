@@ -1,7 +1,6 @@
-#include <stdio.h>
-#include <stdarg.h>
-#include <unistd.h>
 #include "main.h"
+
+int BUFFER_SIZE = 1024;
 
 /**
  * _printf - a function that prints formated text
@@ -11,53 +10,20 @@
  */
 int _printf(const char *str, ...)
 {
-	int chars_printed = 0;
-	va_list num_of_args;
+	char *buffer;
+	va_list args;
+	int len;
 
 	if (str == NULL)
 		return (-1);
 
-	va_start(num_of_args, str);
+	va_start(args, str);
+	buffer = parser(str, args);
 
-	while (*str)
-	{
-		if (*str != '%')
-		{
-			write(1, str, 1);
-			chars_printed++;
-		}
-		else
-		{
-			str++;
-			if (*str == '\0')
-				break;
-			if (*str == 'c')
-			{
-				char letter = va_arg(num_of_args, int);
+	va_end(args);
 
-				write(1, &letter, 1);
-				chars_printed++;
-			}
-			else if (*str == 's')
-			{
-				char *string = va_arg(num_of_args, char*);
-				int len_str = 0;
-
-				while (string[len_str] != '\0')
-					len_str++;
-
-				write(1, string, len_str);
-					chars_printed += len_str;
-			}
-			else if (*str == '%')
-			{
-				write(1, str, 1);
-				chars_printed++;
-			}
-		}
-		str++;
-	}
-	va_end(num_of_args);
-
-	return (chars_printed);
+	print_buffer(buffer);
+	len = _strlen(buffer);
+	free (buffer);
+	return (len);
 }

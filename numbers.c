@@ -1,3 +1,4 @@
+#include <stdarg.h>
 #include "main.h"
 
 /**
@@ -6,9 +7,11 @@
  * @num: int
  * Return: char *
  */
-char *int2str(int num){
+char *int2str(int num)
+{
 	char *str = buffer_alloc(12);
 	int i = 0, isNegative = 0;
+	int start, end;
 
 	if (num == 0)
 	{
@@ -35,8 +38,8 @@ char *int2str(int num){
 	}
 	str[i] = '\0';
 
-	int start = 0, end = i - 1;
-
+	end = i - 1;
+	start = 0;
 	while (start < end)
 	{
 		char temp = str[start];

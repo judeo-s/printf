@@ -46,7 +46,7 @@ char *buffer_alloc(int size)
  */
 int check_utilization(char *buffer, int str_size)
 {
-	int free_space = sizeof(buffer) - _strlen(buffer);
+	int free_space = BUFFER_SIZE - _strlen(buffer);
 	if(str_size > free_space)
 		return (0);
 	else
@@ -67,11 +67,33 @@ char *_realloc(char *buffer, int size)
  	new_buffer = (char *)malloc(size);
 	if (new_buffer)
 	{
-		_memcpy(new_buffer, buffer, sizeof(buffer));
+		_memcpy(new_buffer, buffer, BUFFER_SIZE);
 		free(buffer);
+		BUFFER_SIZE = size;
 	}
 	else
 		return (NULL);
 
 	return (new_buffer);
+}
+
+
+/**
+ * safe_copy - a function that copies data from one buffer to another
+ *
+ * @buffer: char *
+ * @data: char *
+ * Return: int
+ */
+int safe_copy(char *buffer, char *data)
+{
+	while(!check_utilization(buffer, _strlen(data)))
+	{
+		buffer = _realloc(buffer, BUFFER_SIZE + 1024);
+	}
+	str_concat(buffer, data);
+	if(buffer)
+		return (1);
+	else
+		return (0);
 }

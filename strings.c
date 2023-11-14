@@ -1,5 +1,47 @@
 #include "main.h"
 
+/**
+ * _char - a funciton to generate a char variadic function as string.
+ *
+ * @args: va_list
+ * Return: char *
+ */
+char *_char(va_list args)
+{
+	char *str = buffer_alloc(2);
+	str[0] = (char)va_arg(args, int);
+	str[1] = '\0';
+	return str;
+}
+
+
+/**
+ * _percent - a function that converts a % sign into string.
+ *
+ * @args: va_list
+ * Return: char *
+ */
+char *_percent(__attribute__((unused))va_list args)
+{
+	char *str = buffer_alloc(2);
+	str[0] = '%';
+	str[1] = '\0';
+	return str;
+}
+
+
+/**
+ * _string - a function that retrieves strings from variadic arguments
+ *
+ * @args: va_list
+ * Return: char *
+ */
+char *_string(va_list args)
+{
+	char *string = va_arg(args, char *);
+	return (string);
+}
+
 
 /**
  * _strlen - a function that returns the size of a string
@@ -11,7 +53,7 @@ int _strlen(char *s)
 {
 	int i;
 
-	if (s)
+	if (!s)
 		return (0);
 	
 	for (i = 0; s[i] != '\0'; ++i)
@@ -35,7 +77,7 @@ void str_concat(char *s1, char *s2)
 	static char *string1;
 	static char *string2;
 
-	int size1, size2, x, y;
+	int size, x, y;
 
 	if (string1 == NULL)
 		string1 = "";
@@ -45,9 +87,8 @@ void str_concat(char *s1, char *s2)
 
 	string1 = s1;
 	string2 = s2;
-	size1 = _strlen(s1);
-	size2 = _strlen(s2) + 1;
-	x = size1;
+	size = _strlen(s1);
+	x = size;
 	y = 0;
 
 	while (string2[y] != '\0')
