@@ -14,6 +14,7 @@ int _printf(const char *str, ...)
 	va_list args;
 	int len;
 
+	BUFFER_SIZE = 1024;
 	if (str == NULL)
 		return (-1);
 
@@ -24,6 +25,6 @@ int _printf(const char *str, ...)
 
 	print_buffer(buffer);
 	len = _strlen(buffer);
-	free (buffer);
+	free(buffer);
 	return (len);
 }

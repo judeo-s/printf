@@ -9,9 +9,14 @@
 char *_char(va_list args)
 {
 	char *str = buffer_alloc(2);
-	str[0] = (char)va_arg(args, int);
-	str[1] = '\0';
-	return str;
+
+	if (str)
+	{
+		str[0] = (char)va_arg(args, int);
+		str[1] = '\0';
+		return (str);
+	}
+	return (NULL);
 }
 
 
@@ -24,9 +29,14 @@ char *_char(va_list args)
 char *_percent(__attribute__((unused))va_list args)
 {
 	char *str = buffer_alloc(2);
-	str[0] = '%';
-	str[1] = '\0';
-	return str;
+
+	if (str)
+	{
+		str[0] = '%';
+		str[1] = '\0';
+		return (str);
+	}
+	return (NULL);
 }
 
 
@@ -41,10 +51,16 @@ char *_string(va_list args)
 	char *temp, *string;
 
 	temp = va_arg(args, char *);
-	string = buffer_alloc(_strlen(temp));
-	str_concat(string, temp);
-
-	return (string);
+	if (temp)
+	{
+		string = buffer_alloc(_strlen(temp));
+		if (string)
+		{
+			str_concat(string, temp);
+			return (string);
+		}
+	}
+	return (NULL);
 }
 
 
@@ -60,7 +76,7 @@ int _strlen(char *s)
 
 	if (!s)
 		return (0);
-	
+
 	for (i = 0; s[i] != '\0'; ++i)
 	{
 		continue;

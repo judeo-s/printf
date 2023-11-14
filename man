@@ -48,7 +48,7 @@ All files were created and compiled on Ubuntu 14.04.4 LTS using GCC 4.8.4.
 Compilation command: \fBgcc -Wall -Werror -Wextra -pedantic *.c\fP
 
 .SH SEE ALSO
-man printf - the standard io function for formating 
+man printf - the standard io function for formating
 
 .SH AUTHORS
 Jude Osam-Sackey <osamsackeyjude@gmail.com>

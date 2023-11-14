@@ -30,7 +30,7 @@ char *buffer_alloc(int size)
 	static char *buffer;
 
 	buffer = (char *)malloc(size);
-	if(!buffer)
+	if (!buffer)
 		return (NULL);
 
 	clear_buffer(buffer, size);
@@ -43,12 +43,13 @@ char *buffer_alloc(int size)
  *                     space in the buffer for string concatination
  * @buffer: char *
  * @str_size: int
- * Return: int 
+ * Return: int
  */
 int check_utilization(char *buffer, int str_size)
 {
 	int free_space = BUFFER_SIZE - _strlen(buffer);
-	if(str_size > free_space)
+
+	if (str_size > free_space)
 		return (0);
 	else
 		return (1);
@@ -59,13 +60,14 @@ int check_utilization(char *buffer, int str_size)
  * _realloc - a function that reallocates more memory for parsed buffer.
  *
  * @buffer: char *
+ * @size: int
  * Return: char *
  */
 char *_realloc(char *buffer, int size)
 {
 	static char *new_buffer;
 
- 	new_buffer = buffer_alloc(size);
+	new_buffer = buffer_alloc(size);
 	if (new_buffer)
 	{
 		_memcpy(new_buffer, buffer, BUFFER_SIZE);
@@ -88,12 +90,12 @@ char *_realloc(char *buffer, int size)
  */
 int safe_copy(char *buffer, char *data)
 {
-	while(!check_utilization(buffer, _strlen(data)))
+	while (!check_utilization(buffer, _strlen(data)))
 	{
 		buffer = _realloc(buffer, BUFFER_SIZE + 1024);
 	}
 	str_concat(buffer, data);
-	if(buffer)
+	if (buffer)
 		return (1);
 	else
 		return (0);

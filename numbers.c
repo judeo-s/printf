@@ -9,7 +9,7 @@
  */
 char *int2str(int num)
 {
-	char *str = buffer_alloc(12);
+	char temp, *str = buffer_alloc(12);
 	int i = 0, isNegative = 0;
 	int start, end;
 
@@ -42,8 +42,7 @@ char *int2str(int num)
 	start = 0;
 	while (start < end)
 	{
-		char temp = str[start];
-
+		temp = str[start];
 		str[start] = str[end];
 		str[end] = temp;
 		start++;
@@ -54,14 +53,14 @@ char *int2str(int num)
 
 
 /**
- * int2str - a function to convert signed integers to strings
+ * long2str - a function to convert signed integers to strings
  *
  * @num: int
  * Return: char *
  */
 char *long2str(long num)
 {
-	char *str = buffer_alloc(20);
+	char temp, *str = buffer_alloc(20);
 	int i = 0, isNegative = 0;
 	int start, end;
 
@@ -94,8 +93,7 @@ char *long2str(long num)
 	start = 0;
 	while (start < end)
 	{
-		char temp = str[start];
-
+		temp = str[start];
 		str[start] = str[end];
 		str[end] = temp;
 		start++;
@@ -122,8 +120,8 @@ char *_integer(va_list args)
 
 
 /**
- * _unsigned - a function that converts variadic unsigned 
- * 			  integer inputs to strings.
+ * _unsigned - a function that converts variadic unsigned
+ *             integer inputs to strings.
  *
  * @args: va_list
  * Return: char *

@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdio.h>
+
 /**
  * _binary - a function that converts integer values to binary string
  *
@@ -50,7 +51,7 @@ char *_binary(va_list args)
 char *_octal(va_list args)
 {
 	char *octal_str = buffer_alloc(33);
-	int i, j; 
+	int i, j;
 	long num;
 	char char_temp;
 

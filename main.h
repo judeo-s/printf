@@ -7,15 +7,21 @@ extern int BUFFER_SIZE;
 #include <stdlib.h>
 #include <unistd.h>
 
+/**
+ * struct format_list - a struct used to list the various specifiers
+ *                      and their corresponding functions
+ * @symbol: char *
+ * @f: (char *)(*f)(va_list)
+ */
 typedef struct format_list
 {
 	char *symbol;
 	char * (*f)(va_list);
-}format_t;
+} format_t;
 
 
 int _printf(const char *, ...);
-char * parser(const char *, va_list);
+char *parser(const char *, va_list);
 
 
 char *buffer_realloc(char *buffer);
@@ -41,5 +47,7 @@ char *_char(va_list args);
 char *_reverse(va_list args);
 char *_rot13(va_list args);
 void print_buffer(char *buffer);
-void clear_buffer(char* buffer, int size);
+void clear_buffer(char *buffer, int size);
+char *_address(va_list args);
+
 #endif
