@@ -1,26 +1,34 @@
-# Printf Project
+```markdown
+# _printf(3) User Manual
 
-This project, part of the first-year curriculum at ALX, aims to replicate the functionality of the C standard library's `printf()` function. The project encompasses a variety of tasks that involve teamwork, application of variadic functions, understanding the complexities of the `printf` function, and managing a project with multiple files.
+## NAME
 
-## Learning Objectives
+`_printf` - format and print data
 
-- **Version Control with Git:** Learn how to use Git in a team setting, managing branches, resolving conflicts, and maintaining a clean version history.
-- **Variadic Functions:** Apply variadic functions to a substantial project, understanding how to handle a variable number of arguments.
-- **Complexities of printf:** Gain insight into the intricacies of the `printf` function, including handling various format specifiers and flags.
-- **Project Management:** Learn how to manage a project with numerous files efficiently, establishing a productive workflow.
+## SYNOPSIS
 
-## Prototype
+```c
+#include "main.h"
+int _printf(const char *format, ...);
+```
+
+## DESCRIPTION
+
+The `_printf` function prints formatted text to the standard output, similar to the C standard library's `printf()` function. It supports various conversion specifiers to handle different types of data.
+
+The function should be used by including the "main.h" header file in your program.
+
+## PROTOTYPE
 
 ```c
 int _printf(const char *format, ...);
 ```
 
-## Usage
+## USAGE
 
 To use `_printf`, include the "main.h" header file in your program. Call the function with a format string and any additional arguments.
 
 The format string may contain conversion specifiers, flags, and regular characters. Some supported conversion specifiers include:
-
 - `%c` - character
 - `%s` - string
 - `%d` - base 10 integer
@@ -28,46 +36,40 @@ The format string may contain conversion specifiers, flags, and regular characte
 
 Returns the number of characters in the output string on success, -1 otherwise.
 
-## Examples
+## EXAMPLES
 
 ```c
 #include "main.h"
-
 int main(void) {
     _printf("Hello, %s!\n", "world");
     return (0);
 }
 ```
 
-## Compilation
+## COMPILATION
 
 All files were created and compiled on Ubuntu 14.04.4 LTS using GCC 4.8.4.
 
-Compilation command:
+Compilation command: `gcc -Wall -Werror -Wextra -pedantic *.c`
 
-```bash
-gcc -Wall -Werror -Wextra -pedantic *.c
-```
-
-## See Also
+## SEE ALSO
 
 - `man printf` - the standard I/O function for formatting
 
-## Authors
+## AUTHORS
 
 - Jude Osam-Sackey <osamsackeyjude@gmail.com>
 - Aminu Yiwere <yiwereamin@gmail.com>
 
-## Bugs
+## BUGS
 
 Report bugs to <yiwereamin@gmail.com>.
 
-## Copyright
+## COPYRIGHT
 
 Copyright (C) 2023 ALX SE. This is free software.
 
-## License
+## LICENSE
 
 This program comes with ABSOLUTELY NO WARRANTY.
 ```
-
