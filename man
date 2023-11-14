@@ -1,0 +1,66 @@
+.TH PRINTF 3 "November 2023" "Printf Project" "User Manual"
+
+.SH NAME
+_printf \- format and print data
+
+.SH SYNOPSIS
+\fB#include "main.h"\fP
+.br
+\fBint _printf(const char *format, ...);\fP
+
+.SH DESCRIPTION
+The \fB_printf\fP function prints formatted text to the standard output, similar to the C standard library's \fBprintf()\fP function. It supports various conversion specifiers to handle different types of data.
+
+The function should be used by including the "main.h" header file in your program.
+
+.SH PROTOTYPE
+\fBint _printf(const char *format, ...);\fP
+
+.SH USAGE
+To use \fB_printf\fP, include the "main.h" header file in your program. Call the function with a format string and any additional arguments.
+
+The format string may contain conversion specifiers, flags, and regular characters. Some supported conversion specifiers include:
+.br
+\fB%c\fP - character
+.br
+\fB%s\fP - string
+.br
+\fB%d\fP - base 10 integer
+.br
+\fBi\fP - integer
+
+Returns the number of characters in the output string on success, -1 otherwise.
+
+.SH EXAMPLES
+\fB#include "main.h"\fP
+.br
+\fBint main(void) {\fP
+.br
+\fB   _printf("Hello, %s!\n", "world");\fP
+.br
+\fB   return (0);\fP
+.br
+\fB}\fP
+
+.SH COMPILATION
+All files were created and compiled on Ubuntu 14.04.4 LTS using GCC 4.8.4.
+.br
+Compilation command: \fBgcc -Wall -Werror -Wextra -pedantic *.c\fP
+
+.SH SEE ALSO
+man printf - the standard io function for formating 
+
+.SH AUTHORS
+Jude Osam-Sackey <osamsackeyjude@gmail.com>
+.br
+Aminu Yiwere <yiwereamin@gmail.com>
+
+.SH BUGS
+Report bugs to <yiwereamin@gmail.com>.
+
+.SH COPYRIGHT
+Copyright (C) 2023 ALX SE. This is free software.
+
+.SH LICENSE
+This program comes with ABSOLUTELY NO WARRANTY.
+
